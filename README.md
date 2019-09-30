@@ -17,3 +17,17 @@
 
 
 - `sls invoke local -f snap`   || To run it locally
+
+
+
+## TODO:
+- child_process.exec has a buffer limit
+  Replace with child_process.spawn method and make it a streaming process.
+        
+- Encrypt the stream and forward to S3 stream uploader.
+
+- Make a streaming upload to S3, with display of percentage upload.
+
+- Change LD_LIBRARY_PATH to pg_dump executable directory.
+
+- Check for pg_dump errors
