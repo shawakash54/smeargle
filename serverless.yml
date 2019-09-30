@@ -1,0 +1,32 @@
+service: smeargle
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+
+functions:
+  snap:
+    handler: handler.snap
+    events:
+      - schedule: rate(1 day)
+    environment:
+      AWS_ACCESS_KEY: ${self:custom.environment.AWS_ACCESS_KEY}
+      AWS_SECRET_ACCESS_KEY: ${self:custom.environment.AWS_SECRET_ACCESS_KEY}
+      PGDATABASE: ${self:custom.environment.PGDATABASE}
+      PGUSER: ${self:custom.environment.PGUSER}
+      PGPASSWORD: ${self:custom.environment.PGPASSWORD}
+      PGPORT: ${self:custom.environment.PGPORT}
+      PGHOST: ${self:custom.environment.PGHOST}
+      S3_BUCKET: ${self:custom.environment.S3_BUCKET}
+      S3_REGION: ${self:custom.environment.S3_REGION}
+    timeout: 9000
+
+plugins:
+  - serverless-offline
+  - serverless-offline-scheduler
+  - serverless-plugin-scripts
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}

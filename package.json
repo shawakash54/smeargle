@@ -1,0 +1,23 @@
+{
+  "name": "smeargle",
+  "version": "1.0.0",
+  "description": "Lambda to take a snapshot of RDS and store it in s3",
+  "author": "Akash Shaw",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.537.0",
+    "bluebird": "^3.5.5",
+    "moment": "^2.24.0",
+    "serverless-plugin-scripts": "^1.0.2",
+    "through2": "^3.0.1"
+  },
+  "devDependencies": {
+    "serverless-offline": "^5.11.0",
+    "serverless-offline-scheduler": "^0.3.8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm install -g serverless",
+    "start": "sls offline"
+  }
+}
